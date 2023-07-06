@@ -1,0 +1,2 @@
+# cocos-demo
+learn=demo
