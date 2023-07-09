@@ -22,6 +22,12 @@ export class EnemyManager extends Component {
         }, 2, macro.REPEAT_FOREVER, 0)
 
     }
+    //关闭定时器
+    closeBulletSchedule(){
+        this.unscheduleAllCallbacks()
+    }
+
+
 
     update(deltaTime: number) {
 

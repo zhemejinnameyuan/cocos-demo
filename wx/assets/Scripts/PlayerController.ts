@@ -1,4 +1,6 @@
-import { _decorator, BoxCollider2D, Collider2D, Component, Contact2DType, director, instantiate, IPhysics2DContact, macro, NodeEventType, PhysicsSystem2D, Prefab } from 'cc';
+import { _decorator, BoxCollider2D, Collider2D, Component, Contact2DType, director, find, instantiate, IPhysics2DContact, macro, NodeEventType, PhysicsSystem2D, Prefab } from 'cc';
+import { EnemyController } from './EnemyController';
+import { EnemyManager } from './EnemyManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('PlayerController')
@@ -35,9 +37,30 @@ export class PlayerController extends Component {
 
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
         // 只在两个碰撞体开始接触时被调用一次
-        console.log('player22:'+otherCollider.tag);
+
+        if(otherCollider.tag === 1){
+            //敌机撞上玩家飞机,显示gameover
+           find('Canvas/gameover').active = true
+
+           //关闭定时器
+           this.closeBulletSchedule()
+
+           //关闭触摸事件
+           this.node.off(NodeEventType.TOUCH_MOVE)
+
+           //关闭敌机定时器
+           find('Canvas/EnemyManager').getComponent(EnemyManager).closeBulletSchedule()
+        }
     }
  
+    //关闭定时器
+    closeBulletSchedule(){
+        this.unscheduleAllCallbacks()
+    }
+
+    gameOver(){
+        
+    }
 
     update(deltaTime: number) {
 

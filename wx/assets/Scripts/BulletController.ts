@@ -20,7 +20,7 @@ export class BulletController extends Component {
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
         // 只在两个碰撞体开始接触时被调用一次
         //碰到敌人,让敌人死人,销毁自己
-        console.log('bullet:' + otherCollider.tag);
+        // console.log('bullet:' + otherCollider.tag);
         if (otherCollider.tag === 1) {
             otherCollider.getComponent(EnemyController).die()
 

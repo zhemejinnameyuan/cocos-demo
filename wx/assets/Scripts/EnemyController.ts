@@ -1,4 +1,4 @@
-import { _decorator, assert, BoxCollider, BoxCollider2D, Collider2D, Component, Contact2DType, IPhysics2DContact, Node, PhysicsSystem2D, resources, Sprite } from 'cc';
+import { _decorator, assert, BoxCollider, BoxCollider2D, Collider2D, Component, Contact2DType, find, IPhysics2DContact, Node, PhysicsSystem2D, resources, Sprite } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('EnemyController')
@@ -28,8 +28,7 @@ export class EnemyController extends Component {
 
     //碰撞监听
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
-        // 只在两个碰撞体开始接触时被调用一次
-        console.log('enemy:' + otherCollider.tag);
+
     }
 
 
