@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 import levels from '../../Levels';
 import { createUINode } from '../../Utils';
 import { TileManager } from './TileManager';
+import { DataManagerInterface } from '../../Runtime/DataManager';
 
 
 @ccclass('TileMapManager')
@@ -12,7 +13,7 @@ export class TileMapManager extends Component {
     }
 
     async init() {
-        const { mapInfo } = levels['level1']
+       const {mapInfo} = DataManagerInterface
 
         const spriteFrames = await this.loadRes()
 
