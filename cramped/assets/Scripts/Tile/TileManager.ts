@@ -4,6 +4,9 @@ const { ccclass, property } = _decorator;
 const TILE_WIDTH = 55
 const TILE_HEIGHT = 55
 
+/**
+ * 单个瓦片管理
+ */
 @ccclass('TileManager')
 export class TileManager extends Component {
     start() {
@@ -18,7 +21,6 @@ export class TileManager extends Component {
         transform.setContentSize(TILE_WIDTH,TILE_HEIGHT)
 
         this.node.setPosition(i * TILE_WIDTH,-j*TILE_HEIGHT)
- 
     }
 
     update(deltaTime: number) {

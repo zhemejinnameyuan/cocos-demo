@@ -1,6 +1,9 @@
 import { _decorator, Component, Layers, Node, UITransform } from 'cc';
 
-
+/**
+ * 生成UI节点
+ * @returns 
+ */
 export const createUINode = () => {
     const node = new Node()
     const transform = node.addComponent(UITransform)
