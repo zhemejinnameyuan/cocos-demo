@@ -1,9 +1,8 @@
 import { _decorator, Component, Layers, Node, resources, Sprite, SpriteFrame, UITransform } from 'cc';
-const { ccclass, property } = _decorator;
-import levels from '../../Levels';
+const { ccclass, property } = _decorator; 
 import { createUINode } from '../../Utils';
-import { TileManager } from './TileManager';
-import { DataManagerInterface } from '../../Runtime/DataManager';
+import { TileManager } from './TileManager'; 
+import { DataManager } from '../../Runtime/DataManager';
 
 
 @ccclass('TileMapManager')
@@ -13,7 +12,7 @@ export class TileMapManager extends Component {
     }
 
     async init() {
-        const { mapInfo } = DataManagerInterface
+        const mapInfo = DataManager.instance<DataManager>().mapInfo
         const spriteFrames = await this.loadRes()
         //循环处理地图信息
         for (let i = 0; i < mapInfo.length; i++) {

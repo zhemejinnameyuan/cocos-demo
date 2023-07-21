@@ -1,11 +1,9 @@
+import Singleton from "../Base/Singleton"
 import { ITile } from "../Levels"
 
-class DataManager{
+export class DataManager extends Singleton{
     mapInfo:Array<Array<ITile>>
     mapRowCount:number
     mapCloumnCount:number
-
-
 }
-
-export const DataManagerInterface = new DataManager()
+ 
