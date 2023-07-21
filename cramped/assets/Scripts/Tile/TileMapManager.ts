@@ -3,6 +3,7 @@ const { ccclass, property } = _decorator;
 import { createUINode } from '../../Utils';
 import { TileManager } from './TileManager'; 
 import { DataManager } from '../../Runtime/DataManager';
+import { ResourceManager } from '../../Runtime/ResourceManager';
 
 
 @ccclass('TileMapManager')
@@ -12,8 +13,13 @@ export class TileMapManager extends Component {
     }
 
     async init() {
+        //获取地图信息
         const mapInfo = DataManager.instance<DataManager>().mapInfo
-        const spriteFrames = await this.loadRes()
+        //加载瓦片图片资源
+        console.log(ResourceManager.instance<ResourceManager>().title)
+        const spriteFrames =  ResourceManager.instance<ResourceManager>().loadDir('texture/tile/tile',SpriteFrame)
+ 
+        
         //循环处理地图信息
         for (let i = 0; i < mapInfo.length; i++) {
             const cloum = mapInfo[i];
@@ -33,21 +39,7 @@ export class TileMapManager extends Component {
         }
     }
 
-    /**
-     * 加载瓦片图片资源
-     */
-    loadRes() {
-        return new Promise<SpriteFrame[]>((resolve, reject) => {
-            resources.loadDir('texture/tile/tile', SpriteFrame, function (err, spriteFrame) {
-                if (err) {
-                    reject(err)
-                    return
-                }
-                resolve(spriteFrame)
-            })
-
-        })
-    }
+ 
 
     update(deltaTime: number) {
 
