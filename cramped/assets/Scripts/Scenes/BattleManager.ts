@@ -2,7 +2,8 @@ import { _decorator, Component, Node } from 'cc';
 import { TileMapManager } from '../Tile/TileMapManager';
 import { createUINode } from '../../Utils';
 import levels, { ILevel } from '../../Levels';
-import { DataManager } from '../../Runtime/DataManager';
+import { DataManager } from '../../Runtime/DataManager'; 
+import WebsocketManager from '../../Runtime/WebsocketManager';
 const { ccclass, property } = _decorator;
 const TILE_WIDTH = 55
 const TILE_HEIGHT = 55
@@ -19,6 +20,12 @@ export class BattleManager extends Component {
     start() {
         this.generateStage()
         this.initLevel()
+
+        const address = 'ws://127.0.0.1:9502?token=eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWRtaW4iLCJwYXNzd29yZCI6IjEyMzQ1NiJ9'
+        const websocketMgr = WebsocketManager.instance<WebsocketManager>()
+
+        websocketMgr.connectWebSocket(address)
+        websocketMgr.sendMessage(window.btoa("nihao"))
     }
 
     /**

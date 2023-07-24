@@ -3,9 +3,8 @@ import Singleton from "../Base/Singleton"
 import { ITile } from "../Levels"
 
 export class ResourceManager extends Singleton {
-
-    title: string = '11aa'
-
+ 
+    /** 构造函数 */
     protected constructor() {
         super()
     }
@@ -15,6 +14,7 @@ export class ResourceManager extends Singleton {
         return new ResourceManager()
     }
 
+    /** 加载资源 */
     loadDir(path: string, type: typeof SpriteFrame = SpriteFrame){
         return new Promise<SpriteFrame[]>((resolve, reject) => {
             resources.loadDir(path, type, function (err, assets) {
