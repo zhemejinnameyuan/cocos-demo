@@ -15,10 +15,8 @@ export class TileMapManager extends Component {
     async init() {
         //获取地图信息
         const mapInfo = DataManager.instance<DataManager>().mapInfo
-        //加载瓦片图片资源
-        console.log(ResourceManager.instance<ResourceManager>().title)
-        const spriteFrames =  ResourceManager.instance<ResourceManager>().loadDir('texture/tile/tile',SpriteFrame)
- 
+        //加载瓦片图片资源 
+        const spriteFrames = await ResourceManager.instance<ResourceManager>().loadDir('texture/tile/tile')
         
         //循环处理地图信息
         for (let i = 0; i < mapInfo.length; i++) {
